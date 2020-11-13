@@ -14,4 +14,6 @@ public class TestCar {
         assertEquals(30, scania.getPlatformAngle(), 0.001);
     }
 
+    //TODO tests for CarTransport
+
 }

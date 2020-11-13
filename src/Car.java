@@ -4,7 +4,7 @@ import java.awt.*;
  * Abstract class to create a car.
  * The car can be specified by the number of doors, the amount of enginepower, the color of the car, and the model.
  * This class has methods that are general to all cars.
- * Both classes (Volvo240 and Saab95) inherit this class.
+ *
  *
  * @author Hanna Adenholm
  * @author Dadi Andrason
