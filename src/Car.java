@@ -81,6 +81,17 @@ public abstract class Car implements Movable {
     }
 
     /**
+     * Positions the car depending on the coordinates provided
+     *
+     * @param x is the new value of x
+     * @param y is the new value of x
+     */
+    public void position(double x, double y){
+        setX(x);
+        setY(y);
+    }
+
+    /**
      * Makes the car move in the direction
      */
     public void move() {
