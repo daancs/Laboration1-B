@@ -1,13 +1,19 @@
 import java.awt.*;
 
+/**
+ * An abstract class which is extended by other subclasses of vehicle.
+ * @author Hanna Adenholm
+ * @author Omar Sulaiman
+ * @author Dadi Andrason
+ */
 public abstract class Vehicle implements Movable {
-    private final int nrDoors; // Number of doors on the car
-    private final double enginePower; // Engine power of the car
-    private double currentSpeed; // The current speed of the car
-    private Color color; // Color of the car
-    private final String modelName; // The car model name
-    private double X;   // The x-position of the car
-    private double Y;   // The y-position of the car
+    private final int nrDoors; // Number of doors on the vehicle
+    private final double enginePower; // Engine power of the vehicle
+    private double currentSpeed; // The current speed of the vehicle
+    private Color color; // Color of the vehicle
+    private final String modelName; // The vehicle model name
+    private double X;   // The x-position of the vehicle
+    private double Y;   // The y-position of the vehicle
     private Direction direction;
     public enum Direction {
         NORTH,
@@ -17,12 +23,12 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
-     * Constructor for creating a car of your choice.
+     * Constructor for creating a vehicle of your choice.
      *
-     * @param nrDoors is the number of doors for the  vehicle.
-     * @param enginePower the value of the cars enginePower.
+     * @param nrDoors is the number of doors for the vehicle.
+     * @param enginePower the value of the vehicles enginePower.
      * @param color the color that is to be set.
-     * @param modelName the model name of the  vehicle.
+     * @param modelName the model name of the vehicle.
      */
     public Vehicle(int nrDoors, double enginePower, Color color, String modelName, Direction direction) {
         this.nrDoors = nrDoors;
@@ -42,7 +48,7 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
-     * Sets the x-position of the car to supplied value.
+     * Sets the x-position of the vehicle to supplied value.
      *
      * @param x is the new value of X.
      */
@@ -60,7 +66,7 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
-     * Sets the y-position of the car to supplied value.
+     * Sets the y-position of the vehicle to supplied value.
      *
      * @param y is the new value of Y.
      */
@@ -69,7 +75,7 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
-     * Positions the car depending on the coordinates provided
+     * Positions the vehicle depending on the coordinates provided
      *
      * @param x is the new value of x
      * @param y is the new value of x
@@ -80,7 +86,7 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
-     * Makes the car move in the direction
+     * Makes the vehicle move in the direction
      */
     public void move() {
         switch (direction) {
@@ -92,7 +98,7 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
-     * Makes the car turn to the left by changing it's direction.
+     * Makes the vehicle turn to the left by changing it's direction.
      */
     public void turnLeft(){
         switch(direction){
@@ -104,7 +110,7 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
-     * Makes the car turn right by changing it's direction.
+     * Makes the vehicle turn right by changing it's direction.
      */
     public void turnRight() {
         switch (direction) {
@@ -147,8 +153,8 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
-     * Returns the current color of the car
-     * @return The color of the car
+     * Returns the current color of the vehicle
+     * @return The color of the vehicle
      */
     public Color getColor(){
         return color;
@@ -156,8 +162,8 @@ public abstract class Vehicle implements Movable {
 
 
     /**
-     *Changes the current color to the parameter clr
-     * @param clr is the color the car should become
+     *Changes the current color to the supplied clr
+     * @param clr is the color the vehicle should become
      */
     public void setColor(Color clr){
         color = clr;
@@ -188,7 +194,7 @@ public abstract class Vehicle implements Movable {
 
 
     /**
-     * Increments the currentSpeed of the car by the supplied amount times the speedFactor.
+     * Increments the currentSpeed of the vehicle by the supplied amount.
      * If the speed surpasses the enginePower currentSpeed is set to the value of enginePower instead.
      *
      * @param amount the amount with which the speed is to be incremented
@@ -198,7 +204,7 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
-     * Decreases the currentSpeed of the car if currentSpeed is larger than 0
+     * Decreases the currentSpeed of the vehicle if currentSpeed is larger than 0
      * @param amount the amount with which the speed is to be decremented.
      */
     private void decrementSpeed(double amount){
@@ -206,19 +212,18 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
-     * Accelerates the car the method is called on.
+     * Accelerates the vehicle the method is called on.
      * @param amount is the amount of how much currentSpeed should increase.
-     * @param speedFactor is the speedFactor a car or truck has.
-     * //TODO better documentation
+     * @param speedFactor is the speedFactor a vehicle has.
      */
     public void gas(double amount, double speedFactor){
         if (amount > 0 && amount <= 1) incrementSpeed(amount * speedFactor);
     }
 
     /**
-     * Takes a double between 1 and 0 and use it to control decrementSpeed
+     * Decelerates the vehicle the method is called on.
      * @param amount the amount that changes how much currentSpeed is going to decrease
-     * @param speedFactor is the speedFactor a car or a truck has
+     * @param speedFactor is the speedFactor a vehicle has.
      */
     public void brake(double amount, double speedFactor){
         if (amount > 0 && amount <= 1) decrementSpeed(amount * speedFactor);

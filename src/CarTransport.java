@@ -11,7 +11,6 @@ import java.util.Deque;
 public class CarTransport implements Movable {
 
 
-    //TODO documentation for class
     private boolean rampIsUp;
     private final Deque<Movable> loadedCars;
     private final int maxLoadedCars;
@@ -54,11 +53,17 @@ public class CarTransport implements Movable {
         }
     }
 
+    /**
+     * Makes the truck turn left.
+     */
     @Override
     public void turnLeft() {
         truck.turnLeft();
     }
 
+    /**
+     * Makes the truck turn right.
+     */
     @Override
     public void turnRight() {
         truck.turnRight();
@@ -119,6 +124,7 @@ public class CarTransport implements Movable {
      *
      * @return a double of the x-position of the vehicle.
      */
+    @Override
     public double getX() {
         return truck.getX();
     }
@@ -128,15 +134,17 @@ public class CarTransport implements Movable {
      *
      * @return a double of the y-position of the vehicle.
      */
+    @Override
     public double getY() {
         return truck.getY();
     }
 
     /**
-     * Positions the car depending on the coordinates provided
+     * Positions the truck depending on the coordinates provided
      *  @param x is the new value of x
      * @param y is the new value of x
      */
+    @Override
     public void position(double x, double y) {
         truck.position(x, y);
     }
