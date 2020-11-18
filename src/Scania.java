@@ -6,26 +6,49 @@ import java.awt.*;
  * @author Omar Sulaiman
  * @author Dadi Andrason
  */
-public class Scania extends Car{
+public class Scania implements Movable{
 
     private int platformAngle;
-
-
-
+    private Truck truck;
 
     /**
      * Constructs a Scania99 with 2 doors, engine power 570 and colour blue
      */
     public Scania() {
-        super(2, 570, Color.BLUE, "Scania99", Direction.NORTH);
-        stopEngine();
+        truck = new Truck(2, 570, Color.BLUE, "Scania99", Vehicle.Direction.NORTH);
+        truck.stopEngine();
+    }
+
+
+    public void move() {
+        if(platformAngle == 0) {
+            truck.move();
+        }
     }
 
     @Override
-    public void move() {
-        if(platformAngle == 0) {
-            super.move();
-        }
+    public void turnLeft() {
+
+    }
+
+    @Override
+    public void turnRight() {
+
+    }
+
+    @Override
+    public void position(double x, double y) {
+
+    }
+
+    @Override
+    public double getX() {
+        return 0;
+    }
+
+    @Override
+    public double getY() {
+        return 0;
     }
 
     public double speedFactor() {
@@ -47,7 +70,7 @@ public class Scania extends Car{
      * @param angle is the angle that the platform is to be raised to
      */
     public void raisePlatform(int angle){
-        if (platformAngle < angle && getCurrentSpeed() < 0.001){
+        if (platformAngle < angle && truck.getCurrentSpeed() < 0.001){
             platformAngle = Math.min(angle,70);
         }
     }

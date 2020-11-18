@@ -8,11 +8,15 @@ import java.util.Deque;
  * @author Omar Sulaiman
  * @author Dadi Andrason
  */
-public class CarTransport extends Car {
+public class CarTransport implements Movable {
 
+
+    //TODO documentation for class
     private boolean rampIsUp;
-    private final Deque<Car> loadedCars;
+    private final Deque<Movable> loadedCars;
     private final int maxLoadedCars;
+    private final Truck truck;
+
 
 
     /**
@@ -20,7 +24,7 @@ public class CarTransport extends Car {
      * It creates a stack to load the cars in to and sets the value of maximum loaded cars into the ramp
      */
     public CarTransport() {
-        super(2, 700, Color.CYAN, "Car transport", Direction.NORTH);
+        truck = new Truck(2, 700, Color.CYAN, "Car transport", Vehicle.Direction.NORTH);
         loadedCars = new ArrayDeque<>();
         maxLoadedCars = 5;
     }
@@ -29,9 +33,11 @@ public class CarTransport extends Car {
      * Returns the speedFactor 1
      * @return the speedFactor 1
      */
-    @Override
-    public double speedFactor() {
-        return 1;
+    public double speedFactor() {return 1;}
+
+
+    public Deque<Movable> getLoadedCars() {
+        return loadedCars;
     }
 
     /**
@@ -41,11 +47,21 @@ public class CarTransport extends Car {
     @Override
     public void move(){
         if(rampIsUp){
-            super.move();
-            for (Car car: loadedCars){
+            truck.move();
+            for (Movable car: loadedCars){
                 car.position(this.getX(), this.getY());
             }
         }
+    }
+
+    @Override
+    public void turnLeft() {
+        truck.turnLeft();
+    }
+
+    @Override
+    public void turnRight() {
+        truck.turnRight();
     }
 
     /**
@@ -53,7 +69,7 @@ public class CarTransport extends Car {
      * works  only if the car transport is stationary
      */
     public void changeRamp() {
-        if(getCurrentSpeed() < 0.0001){
+        if(truck.getCurrentSpeed() < 0.0001){
             rampIsUp = !rampIsUp;
         }
     }
@@ -68,21 +84,21 @@ public class CarTransport extends Car {
      * @param car is the car that might get loaded onto the car transport.
      * @return a boolean based on all circumstances.
      */
-    private boolean validateLoadCircumstances(Car car) {
+    private boolean validateLoadCircumstances(Movable car) {
         return !rampIsUp &&
-                Math.abs(car.getX() - this.getX()) < 10 &&
-                Math.abs(car.getY() - this.getY()) < 10 &&
-                !(car instanceof CarTransport) &&
+                Math.abs(car.getX() - truck.getX()) < 10 &&
+                Math.abs(car.getY() - truck.getY()) < 10 &&
+                !(car.equals(this)) &&
                 loadedCars.size() < maxLoadedCars;
     }
 
     /**
-     * Loads the provided car unto the truck if all the conditions in validateLoadCircumstanses are met.
+     * Loads the provided car unto the truck if all the conditions in validateLoadCircumstances are met.
      * @param car the car that is to be loaded unto the truck.
      */
-    private void loadCar(Car car) {
+    public void loadCar(Movable car) {
         if(validateLoadCircumstances(car)) {
-            car.position(this.getX(), this.getY());
+            car.position(truck.getX(), truck.getY());
             loadedCars.push(car);
         }
     }
@@ -93,8 +109,118 @@ public class CarTransport extends Car {
      */
     private void unloadCar() {
         if (!rampIsUp && !loadedCars.isEmpty()) {
-            Car car = loadedCars.pop();
-            car.position(this.getX() + 10, this.getY() - 10);
+            Movable car = loadedCars.pop();
+            car.position(truck.getX() + 10, truck.getY() - 10);
         }
+    }
+
+    /**
+     * Returns the x-position of the vehicle.
+     *
+     * @return a double of the x-position of the vehicle.
+     */
+    public double getX() {
+        return truck.getX();
+    }
+
+    /**
+     * Returns the y-position of the vehicle.
+     *
+     * @return a double of the y-position of the vehicle.
+     */
+    public double getY() {
+        return truck.getY();
+    }
+
+    /**
+     * Positions the car depending on the coordinates provided
+     *  @param x is the new value of x
+     * @param y is the new value of x
+     */
+    public void position(double x, double y) {
+        truck.position(x, y);
+    }
+
+    /**
+     * Returns the variable nrDoors on the vehicle.
+     *
+     * @return the number of doors on the vehicle.
+     */
+    public int getNrDoors() {
+        return truck.getNrDoors();
+    }
+
+    /**
+     * Returns current enginePower
+     *
+     * @return the engine power of the vehicle.
+     */
+    public double getEnginePower() {
+        return truck.getEnginePower();
+    }
+
+    /**
+     * Returns the current speed of the vehicle.
+     *
+     * @return the current speed of the vehicle.
+     */
+    public double getCurrentSpeed() {
+        return truck.getCurrentSpeed();
+    }
+
+    /**
+     * Returns the current color of the car
+     * @return The color of the car
+     */
+    public Color getColor() {
+        return truck.getColor();
+    }
+
+    /**
+     *Changes the current color to the parameter clr
+     * @param clr is the color the car should become
+     */
+    public void setColor(Color clr) {
+        truck.setColor(clr);
+    }
+
+    /**
+     * Returns current direction.
+     * @return the direction of the vehicle.
+     */
+    public Vehicle.Direction getDirection() {
+        return truck.getDirection();
+    }
+
+    /**
+     * Starts the engine by setting current speed to 0.1
+     */
+    public void startEngine() {
+        truck.startEngine();
+    }
+
+    /**
+     * Makes currentSpeed zero
+     */
+    public void stopEngine() {
+        truck.stopEngine();
+    }
+
+    /**
+     * Accelerates the car the method is called on.
+     * @param amount is the amount of how much currentSpeed should increase.
+     * @param speedFactor is the speedFactor a car or truck has.
+     */
+    public void gas(double amount, double speedFactor) {
+        truck.gas(amount, speedFactor);
+    }
+
+    /**
+     * Takes a double between 1 and 0 and use it to control decrementSpeed
+     * @param amount the amount that changes how much currentSpeed is going to decrease
+     * @param speedFactor is the speedFactor a car or a truck has
+     */
+    public void brake(double amount, double speedFactor) {
+        truck.brake(amount, speedFactor);
     }
 }
