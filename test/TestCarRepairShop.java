@@ -20,6 +20,9 @@ public class TestCarRepairShop {
         assertEquals(volvo, volvoRepairShop.getCar());
         assertEquals(saab, genericRepairShop.getCar());
         assertEquals(volvo, genericRepairShop.remove(volvo));
+        Volvo240 volvo2 = volvoRepairShop.remove(volvo);
+        Volvo240 volvo3 = genericRepairShop.remove(volvo);
+        //Saab95 saab2 = volvoRepairShop.remove(saab);
     }
 
 }

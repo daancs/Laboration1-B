@@ -19,6 +19,29 @@ public class TestCarTransport {
         assertEquals(volvo, c.getLoadedCars().peek());
     }
 
+    @Test
+    public void testUnloadCar() {
+        Volvo240 volvo = new Volvo240();
+        CarTransport c = new CarTransport();
+        c.loadCar(volvo);
+
+        c.unloadCar();
+
+        assertEquals(volvo. getY(), c.getY()-10, 0.001);
+        assertEquals(volvo.getX(), c.getX()+10, 0.001);
+    }
+
+    @Test
+    public void testChangeRamp() {
+        CarTransport c = new CarTransport();
+        c.startEngine();
+        c.changeRamp();
+        assertFalse(c.isRampIsUp());
+        c.stopEngine();
+        c.changeRamp();
+        assertTrue(c.isRampIsUp());
+    }
+
 
 
 }

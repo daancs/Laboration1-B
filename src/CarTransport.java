@@ -54,6 +54,14 @@ public class CarTransport implements IVehicle {
     }
 
     /**
+     * Getter for ramp position.
+     * @return true if ramp is up, otherwise false.
+     */
+    public boolean isRampIsUp() {
+        return rampIsUp;
+    }
+
+    /**
      * Makes the truck turn left.
      */
     @Override
@@ -112,7 +120,7 @@ public class CarTransport implements IVehicle {
      * Unloads the last car to be loaded and places it nearby the truck if the ramp is down.
      * if the truck is empty no unloading is done.
      */
-    private void unloadCar() {
+    public void unloadCar() {
         if (!rampIsUp && !loadedCars.isEmpty()) {
             IVehicle car = loadedCars.pop();
             car.position(truck.getX() + 10, truck.getY() - 10);
