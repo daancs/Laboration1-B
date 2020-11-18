@@ -7,12 +7,6 @@ import static org.junit.Assert.*;
 
 public class TestCar {
 
-//    @Test
-//    public void testScania() {
-//        Scania scania = new Scania();
-//        scania.raisePlatform(30);
-//        assertEquals(30, scania.getPlatformAngle(), 0.001);
-//    }
 
     //TODO tests for CarTransport
 
@@ -172,31 +166,6 @@ public class TestCar {
         assertEquals(0.725, volvo.getCurrentSpeed(), 0.001);
     }
 
-    @Test
-    public void LoadCar() {
-        Volvo240 volvo = new Volvo240();
-        CarTransport c = new CarTransport();
-        c.loadCar(volvo);
-
-        assertEquals(c.getX(), volvo.getX(), 0.001);
-        assertEquals(c.getY(), volvo.getY(), 0.001);
-        assertEquals(1, c.getLoadedCars().size());
-        assertEquals(volvo, c.getLoadedCars().peek());
-    }
-
-    @Test
-    public void testRepairShop() {
-        CarRepairShop<Volvo240> volvoRepairShop = new CarRepairShop<>(5);
-        Volvo240 volvo = new Volvo240();
-        volvoRepairShop.loadCar(volvo);
-        CarRepairShop<IVehicle> genericRepairShop = new CarRepairShop<>(5);
-        Saab95 saab = new Saab95();
-        genericRepairShop.loadCar(saab);
-        genericRepairShop.loadCar(volvo);
-        assertEquals(volvo, volvoRepairShop.getCar());
-        assertEquals(saab, genericRepairShop.getCar());
-        assertEquals(volvo, genericRepairShop.remove(volvo));
-    }
 
 
 }
