@@ -193,17 +193,16 @@ public abstract class Vehicle implements Movable {
      *
      * @param amount the amount with which the speed is to be incremented
      */
-    private void incrementSpeed(double amount, double speedFactor){
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor * amount, getEnginePower());
+    private void incrementSpeed(double amount){
+        currentSpeed = Math.min(getCurrentSpeed() + amount, getEnginePower());
     }
 
     /**
      * Decreases the currentSpeed of the car if currentSpeed is larger than 0
      * @param amount the amount with which the speed is to be decremented.
-     * @param speedFactor the speed
      */
-    private void decrementSpeed(double amount, double speedFactor){
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor * amount, 0);
+    private void decrementSpeed(double amount){
+        currentSpeed = Math.max(getCurrentSpeed() - amount, 0);
     }
 
     /**
@@ -213,7 +212,7 @@ public abstract class Vehicle implements Movable {
      * //TODO better documentation
      */
     public void gas(double amount, double speedFactor){
-        if (amount > 0 && amount <= 1) incrementSpeed(amount, speedFactor);
+        if (amount > 0 && amount <= 1) incrementSpeed(amount * speedFactor);
     }
 
     /**
@@ -222,6 +221,6 @@ public abstract class Vehicle implements Movable {
      * @param speedFactor is the speedFactor a car or a truck has
      */
     public void brake(double amount, double speedFactor){
-        if (amount > 0 && amount <= 1) decrementSpeed(amount, speedFactor);
+        if (amount > 0 && amount <= 1) decrementSpeed(amount * speedFactor);
     }
 }
