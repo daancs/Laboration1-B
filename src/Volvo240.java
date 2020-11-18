@@ -6,7 +6,7 @@ import java.awt.*;
  * @author Omar Sulaiman
  * @author Dadi Andrason
  */
-public class Volvo240 implements Movable{
+public class Volvo240 implements IVehicle {
 
 
     /**

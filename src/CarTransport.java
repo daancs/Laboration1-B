@@ -8,11 +8,11 @@ import java.util.Deque;
  * @author Omar Sulaiman
  * @author Dadi Andrason
  */
-public class CarTransport implements Movable {
+public class CarTransport implements IVehicle {
 
 
     private boolean rampIsUp;
-    private final Deque<Movable> loadedCars;
+    private final Deque<IVehicle> loadedCars;
     private final int maxLoadedCars;
     private final Truck truck;
 
@@ -35,7 +35,7 @@ public class CarTransport implements Movable {
     public double speedFactor() {return 1;}
 
 
-    public Deque<Movable> getLoadedCars() {
+    public Deque<IVehicle> getLoadedCars() {
         return loadedCars;
     }
 
@@ -47,7 +47,7 @@ public class CarTransport implements Movable {
     public void move(){
         if(rampIsUp){
             truck.move();
-            for (Movable car: loadedCars){
+            for (IVehicle car: loadedCars){
                 car.position(this.getX(), this.getY());
             }
         }
@@ -89,7 +89,7 @@ public class CarTransport implements Movable {
      * @param car is the car that might get loaded onto the car transport.
      * @return a boolean based on all circumstances.
      */
-    private boolean validateLoadCircumstances(Movable car) {
+    private boolean validateLoadCircumstances(IVehicle car) {
         return !rampIsUp &&
                 Math.abs(car.getX() - truck.getX()) < 10 &&
                 Math.abs(car.getY() - truck.getY()) < 10 &&
@@ -101,7 +101,7 @@ public class CarTransport implements Movable {
      * Loads the provided car unto the truck if all the conditions in validateLoadCircumstances are met.
      * @param car the car that is to be loaded unto the truck.
      */
-    public void loadCar(Movable car) {
+    public void loadCar(IVehicle car) {
         if(validateLoadCircumstances(car)) {
             car.position(truck.getX(), truck.getY());
             loadedCars.push(car);
@@ -114,7 +114,7 @@ public class CarTransport implements Movable {
      */
     private void unloadCar() {
         if (!rampIsUp && !loadedCars.isEmpty()) {
-            Movable car = loadedCars.pop();
+            IVehicle car = loadedCars.pop();
             car.position(truck.getX() + 10, truck.getY() - 10);
         }
     }
@@ -124,7 +124,6 @@ public class CarTransport implements Movable {
      *
      * @return a double of the x-position of the vehicle.
      */
-    @Override
     public double getX() {
         return truck.getX();
     }
@@ -134,7 +133,6 @@ public class CarTransport implements Movable {
      *
      * @return a double of the y-position of the vehicle.
      */
-    @Override
     public double getY() {
         return truck.getY();
     }
@@ -144,7 +142,6 @@ public class CarTransport implements Movable {
      *  @param x is the new value of x
      * @param y is the new value of x
      */
-    @Override
     public void position(double x, double y) {
         truck.position(x, y);
     }
@@ -217,18 +214,16 @@ public class CarTransport implements Movable {
     /**
      * Accelerates the car the method is called on.
      * @param amount is the amount of how much currentSpeed should increase.
-     * @param speedFactor is the speedFactor a car or truck has.
      */
-    public void gas(double amount, double speedFactor) {
-        truck.gas(amount, speedFactor);
+    public void gas(double amount) {
+        truck.gas(amount, speedFactor());
     }
 
     /**
      * Takes a double between 1 and 0 and use it to control decrementSpeed
      * @param amount the amount that changes how much currentSpeed is going to decrease
-     * @param speedFactor is the speedFactor a car or a truck has
      */
-    public void brake(double amount, double speedFactor) {
-        truck.brake(amount, speedFactor);
+    public void brake(double amount) {
+        truck.brake(amount, speedFactor());
     }
 }

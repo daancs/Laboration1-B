@@ -6,7 +6,7 @@ import java.awt.*;
  * @author Omar Sulaiman
  * @author Dadi Andrason
  */
-public class Scania implements Movable{
+public class Scania implements IVehicle {
 
     private int platformAngle;
     private Truck truck;
@@ -113,19 +113,17 @@ public class Scania implements Movable{
     /**
      * Accelerates the vehicle the method is called on.
      * @param amount is the amount of how much currentSpeed should increase.
-     * @param speedFactor is the speedFactor a vehicle has.
      */
-    public void gas(double amount, double speedFactor) {
-        truck.gas(amount, speedFactor);
+    public void gas(double amount) {
+        truck.gas(amount, speedFactor());
     }
 
     /**
      * Decelerates the vehicle the method is called on.
      * @param amount the amount that changes how much currentSpeed is going to decrease
-     * @param speedFactor is the speedFactor a vehicle has.
      */
-    public void brake(double amount, double speedFactor) {
-        truck.brake(amount, speedFactor);
+    public void brake(double amount) {
+        truck.brake(amount, speedFactor());
     }
 
 
@@ -151,7 +149,7 @@ public class Scania implements Movable{
 
     /**
      * Positions the vehicle depending on the coordinates provided
-     *  @param x is the new value of x
+     * @param x is the new value of x
      * @param y is the new value of x
      */
     @Override

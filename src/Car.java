@@ -10,7 +10,7 @@ import java.awt.*;
  * @author Dadi Andrason
  * @author Omar Sulaiman
  */
-public class Car extends Vehicle implements Movable {
+public class Car extends Vehicle {
 
 
     /**

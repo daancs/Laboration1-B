@@ -6,7 +6,7 @@ import java.awt.*;
  * @author Omar Sulaiman
  * @author Dadi Andrason
  */
-public class Saab95 implements Movable{
+public class Saab95 implements IVehicle {
 
 
 
