@@ -149,7 +149,7 @@ public class Volvo240 implements IVehicle {
      * Multiplies the cars enginePower with 0.01 and the trimfactor to get the cars SpeedFactor.
      * @return the cars speedFactor
      */
-    public double speedFactor() {
+    private double speedFactor() {
         return car.getEnginePower() * 0.01 * trimFactor;
     }
 

@@ -9,8 +9,8 @@ import java.util.List;
  */
 public class CarRepairShop<T extends IVehicle> {
 
-    private List<T> cars;
-    private int maximumLimit;
+    private final List<T> cars;
+    private final int maximumLimit;
 
     public CarRepairShop (int maximumLimit){
         this.maximumLimit = maximumLimit;
@@ -29,6 +29,7 @@ public class CarRepairShop<T extends IVehicle> {
      * Removes the provided car from the list.
      * Returns null if car not found in list
      * @param car the car that´s to be removed.
+     * @param <B> is the class of the car that's to be removed
      * @return returns the removed car if found, otherwise null.
      */
     public <B extends T> B remove(B car){

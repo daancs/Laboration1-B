@@ -36,24 +36,6 @@ public class TestCar {
 
     }
 
-    @Test
-    public void testVolvoSpeedFactor() {
-        Volvo240 volvo = new Volvo240();
-        assertEquals(1.25, volvo.speedFactor(), 0.001);
-    }
-
-    @Test
-    public void testSaabSpeedFactor() {
-        Saab95 saab = new Saab95();
-        assertEquals(1.25, saab.speedFactor(), 0.001);
-    }
-
-    @Test
-    public void testSaabSpeedFactorWithTurbo() {
-        Saab95 saab = new Saab95();
-        saab.setTurboOn();
-        assertEquals(1.625, saab.speedFactor(), 0.001);
-    }
 
     @Test
     public void testSaabTurboOn() {

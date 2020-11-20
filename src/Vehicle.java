@@ -29,6 +29,7 @@ public abstract class Vehicle implements Movable {
      * @param enginePower the value of the vehicles enginePower.
      * @param color the color that is to be set.
      * @param modelName the model name of the vehicle.
+     * @param direction sets the direction of the vehicle
      */
     public Vehicle(int nrDoors, double enginePower, Color color, String modelName, Direction direction) {
         this.nrDoors = nrDoors;

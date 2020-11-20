@@ -67,7 +67,7 @@ public class Saab95 implements IVehicle {
      * If turbo is on, the enginepower is to be multiplied with 1.3, otherwise, 1.0
      * @return the speedfactor of the car
      */
-    public double speedFactor(){
+    private double speedFactor(){
         double turbo = 1;
         if(turboOn) turbo = 1.3;
         return car.getEnginePower() * 0.01 * turbo;

@@ -22,7 +22,7 @@ public class TestCarRepairShop {
         assertEquals(volvo, genericRepairShop.remove(volvo));
         Volvo240 volvo2 = volvoRepairShop.remove(volvo);
         Volvo240 volvo3 = genericRepairShop.remove(volvo);
-        //Saab95 saab2 = volvoRepairShop.remove(saab);
+        // Saab95 saab2 = volvoRepairShop.remove(saab);
     }
 
 }

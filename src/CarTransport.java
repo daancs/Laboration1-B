@@ -32,7 +32,7 @@ public class CarTransport implements IVehicle {
      * Returns the speedFactor 1
      * @return the speedFactor 1
      */
-    public double speedFactor() {return 1;}
+    private double speedFactor() {return 1;}
 
 
     public Deque<IVehicle> getLoadedCars() {
@@ -159,7 +159,7 @@ public class CarTransport implements IVehicle {
      *
      * @return the number of doors on the vehicle.
      */
-    public int getNrDoors() {
+    private int getNrDoors() {
         return truck.getNrDoors();
     }
 
@@ -168,7 +168,7 @@ public class CarTransport implements IVehicle {
      *
      * @return the engine power of the vehicle.
      */
-    public double getEnginePower() {
+    private double getEnginePower() {
         return truck.getEnginePower();
     }
 
@@ -177,7 +177,7 @@ public class CarTransport implements IVehicle {
      *
      * @return the current speed of the vehicle.
      */
-    public double getCurrentSpeed() {
+    private double getCurrentSpeed() {
         return truck.getCurrentSpeed();
     }
 
@@ -185,7 +185,7 @@ public class CarTransport implements IVehicle {
      * Returns the current color of the car
      * @return The color of the car
      */
-    public Color getColor() {
+    private Color getColor() {
         return truck.getColor();
     }
 
@@ -193,7 +193,7 @@ public class CarTransport implements IVehicle {
      *Changes the current color to the parameter clr
      * @param clr is the color the car should become
      */
-    public void setColor(Color clr) {
+    private void setColor(Color clr) {
         truck.setColor(clr);
     }
 
@@ -201,7 +201,7 @@ public class CarTransport implements IVehicle {
      * Returns current direction.
      * @return the direction of the vehicle.
      */
-    public Vehicle.Direction getDirection() {
+    private Vehicle.Direction getDirection() {
         return truck.getDirection();
     }
 

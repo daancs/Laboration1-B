@@ -20,6 +20,7 @@ public class Car extends Vehicle {
      * @param enginePower the value of the cars enginePower.
      * @param color the color that is to be set.
      * @param modelName the model name of the vehicle.
+     * @param direction sets the direction of the car
      */
     public Car(int nrDoors, double enginePower, Color color, String modelName, Vehicle.Direction direction){
         super(nrDoors, enginePower, color, modelName, direction);

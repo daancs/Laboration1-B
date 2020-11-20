@@ -9,7 +9,7 @@ import java.awt.*;
 public class Scania implements IVehicle {
 
     private int platformAngle;
-    private Truck truck;
+    private final Truck truck;
 
     /**
      * Constructs a Scania99 with 2 doors, engine power 570 and colour blue with the north direction
@@ -50,7 +50,7 @@ public class Scania implements IVehicle {
      *
      * @return the number of doors on the vehicle.
      */
-    public int getNrDoors() {
+    private int getNrDoors() {
         return truck.getNrDoors();
     }
 
@@ -59,7 +59,7 @@ public class Scania implements IVehicle {
      *
      * @return the engine power of the vehicle.
      */
-    public double getEnginePower() {
+    private double getEnginePower() {
         return truck.getEnginePower();
     }
 
@@ -68,7 +68,7 @@ public class Scania implements IVehicle {
      *
      * @return the current speed of the vehicle.
      */
-    public double getCurrentSpeed() {
+    private double getCurrentSpeed() {
         return truck.getCurrentSpeed();
     }
 
@@ -76,7 +76,7 @@ public class Scania implements IVehicle {
      * Returns the current color of the vehicle
      * @return The color of the vehicle
      */
-    public Color getColor() {
+    private Color getColor() {
         return truck.getColor();
     }
 
@@ -84,7 +84,7 @@ public class Scania implements IVehicle {
      *Changes the current color to the supplied clr
      * @param clr is the color the vehicle should become
      */
-    public void setColor(Color clr) {
+    private void setColor(Color clr) {
         truck.setColor(clr);
     }
 
@@ -92,21 +92,21 @@ public class Scania implements IVehicle {
      * Returns current direction.
      * @return the direction of the vehicle.
      */
-    public Vehicle.Direction getDirection() {
+    private Vehicle.Direction getDirection() {
         return truck.getDirection();
     }
 
     /**
      * Starts the engine by setting current speed to 0.1
      */
-    public void startEngine() {
+    private void startEngine() {
         truck.startEngine();
     }
 
     /**
      * Makes currentSpeed zero
      */
-    public void stopEngine() {
+    private void stopEngine() {
         truck.stopEngine();
     }
 
@@ -161,7 +161,7 @@ public class Scania implements IVehicle {
      * Sets speedFactor to 1
      * @return returns 1
      */
-    public double speedFactor() {
+    private double speedFactor() {
         return 1;
     }
 
